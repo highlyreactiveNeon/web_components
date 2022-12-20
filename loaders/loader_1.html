@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="outerRing"></div>
+    <div class="innerCircle"></div>
+</body>
+
+<style>
+    :root {
+        --background-dark: #000000;
+        --accent-dark : #ffffff;
+
+        --background-light: #ffffff;
+        --accent-light: #000000;
+
+        --animation_time: 2s;
+
+        --loader_size: 15%;
+        --loader_animate_offset: 5.5%;
+
+        --loader_size_outer: calc(var(--loader_size) - 0.5%);
+        --loader_size_inner: var(--loader_size);
+    }
+
+    @media(prefers-color-scheme: dark) {
+        :root {
+            --background: var(--background-dark);
+            --accent: var(--accent-dark);
+        }
+    }
+
+    @media(prefers-color-scheme: light) {
+        :root {
+            --background: var(--background-light);
+            --accent: var(--accent-light);
+        }
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }    
+
+    body {
+        background-color: var(--background);
+    }
+
+    .outerRing {
+        position: absolute;
+        background-color: var(--accent); 
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+
+        aspect-ratio: 1 / 1;
+        /* height: 14.5%; */
+        height: var(--loader_size_outer);
+        box-shadow: 0px 0px 20px var(--accent);
+
+        animation: outerRingAnimation var(--animation_time) ease-in-out;
+        animation-iteration-count: infinite;
+    }
+
+    .innerCircle {
+        position: absolute;
+        background-color: var(--background);
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        
+        aspect-ratio: 1 / 1;
+        height: var(--loader_size_inner);
+        box-shadow: 0px 0px 5px var(--background);
+
+        animation: innerCircleAnimation var(--animation_time) ease-in-out;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes outerRingAnimation {
+        from {
+            height: var(--loader_size_outer);
+            box-shadow: 0px 0px 0px var(--accent);
+        }
+
+        50% {
+            height: calc(var(--loader_animate_offset) + var(--loader_size_outer));
+            box-shadow: 0px 0px 10px var(--accent);
+        }
+
+        to {
+            height: calc(var(--loader_animate_offset) + var(--loader_size_outer));
+            box-shadow: 0px 0px 0px var(--accent);
+        }
+    }
+
+    @keyframes innerCircleAnimation {
+        50% {
+            height: var(--loader_size_inner);
+            box-shadow: 0px 0px 5px var(--background);
+        }
+
+        to {
+            height: calc(var(--loader_size_inner) + var(--loader_animate_offset));
+            box-shadow: 0px 0px 0px var(--background);
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        let meta = document.createElement('meta');
+        meta.name = "theme-color";
+
+        let browser_nav_color = getComputedStyle(document.documentElement).getPropertyValue('--background');
+
+        meta.content = browser_nav_color;
+
+        document.getElementsByTagName('head')[0].appendChild(meta);
+    })()
+</script>
+
+</html>
