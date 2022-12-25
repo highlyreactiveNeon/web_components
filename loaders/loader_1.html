@@ -62,9 +62,7 @@
         transform: translate(-50%, -50%);
 
         aspect-ratio: 1 / 1;
-        /* height: 14.5%; */
         height: var(--loader_size_outer);
-        box-shadow: 0px 0px 20px var(--accent);
 
         animation: outerRingAnimation var(--animation_time) ease-in-out;
         animation-iteration-count: infinite;
@@ -80,7 +78,6 @@
         
         aspect-ratio: 1 / 1;
         height: var(--loader_size_inner);
-        box-shadow: 0px 0px 5px var(--background);
 
         animation: innerCircleAnimation var(--animation_time) ease-in-out;
         animation-iteration-count: infinite;
@@ -104,14 +101,18 @@
     }
 
     @keyframes innerCircleAnimation {
+        from {
+            box-shadow: 0px 0px 0px var(--background) inset;
+        }
+
         50% {
             height: var(--loader_size_inner);
-            box-shadow: 0px 0px 5px var(--background);
+            box-shadow: 0px 0px 10px var(--accent) inset;
         }
 
         to {
             height: calc(var(--loader_size_inner) + var(--loader_animate_offset));
-            box-shadow: 0px 0px 0px var(--background);
+            box-shadow: 0px 0px 0px var(--background) inset;
         }
     }
 </style>
