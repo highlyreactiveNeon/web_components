@@ -21,10 +21,15 @@ input:focus {
     --chat-section: #f6f8fc;
     --chat-user-profile: #fafcff;
     --conv-search-box: #eef2f5;
+    --chat-profile: #fafcff;
+    --chat-input-section: #fafcff;
+    --input-field-section: #f6f8fc;
+    --input-field: transparent;
 
     --text-shade-300: #cccccc;
 
     --blue-shade-500: #4478e9;
+    --black-shade-500: #888888;
 }
 
 .chatAppBody {
@@ -67,5 +72,47 @@ input:focus {
 .convBelongHeading {
     color: var(--text-shade-300);
     font-size: 0.75rem;
+}
 
+.chatSection {
+    height: 100vh;
+    flex: 1;
+    background-color: var(--chat-section);
+
+    display:flex;
+    flex-direction: column;
+}
+
+.chatInputSection {
+    margin-top: auto;
+    background-color: var(--chat-input-section);
+    height: 4rem;
+    padding: 0 1rem;
+}
+
+.inputFieldContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--input-field-section);
+    border-radius: 1.25rem;
+    height: 3rem;
+    margin-top: 0.5rem;
+}
+
+#chatInputField {
+    flex: 1;
+    background-color: var(--input-field);
+    padding: 0.5rem;
+}
+
+.inputFieldIcon {
+    padding: 0 1rem;
+    color: var(--black-shade-500)
+}
+
+.chatProfile {
+    height: 100vh;
+    width: 15rem;
+    background-color: var(--chat-profile);
 }
