@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Comfortaa', cursive;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+:root {
+    --chat-nav-bar: #f6f8fc;
+    --conversation-nav: #fafcff;
+    --chat-section: #f6f8fc;
+    --chat-user-profile: #fafcff;
+    --conv-search-box: #eef2f5;
+
+    --text-shade-300: #cccccc;
+
+    --blue-shade-500: #4478e9;
+}
+
+.chatAppBody {
+    display: flex;
+    flex-direction: row;
+}
+
+.chatNavBar {
+    height: 100vh;
+    width: 4rem;
+    background-color: var(--chat-nav-bar);
+}
+
+.conversationNav {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 15rem;
+    background-color: var(--conversation-nav);
+    padding: 1.5rem;
+}
+
+.convNavHeading {
+    color: var(--blue-shade-500);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.convSearchBox {
+    background-color: var(--conv-search-box);
+    height: 2.5rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.convBelongHeading {
+    color: var(--text-shade-300);
+    font-size: 0.75rem;
+
+}

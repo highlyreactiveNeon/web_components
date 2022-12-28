@@ -15,13 +15,10 @@ export default class Toast {
         this.autoClose = this.#autoCloseValue;
 
         this.#toast.addEventListener("mouseenter", () => {
-            this.#autoCloseValue = this.#autoCloseValue - (new Date() - this.#toastEnterTime);
-            clearTimeout(this.#autoCloseTimeout);
+            this.onMouseEnter();
         });
         this.#toast.addEventListener("mouseleave", () => {
-            if(this.#toast.classList.contains("hide"))
-                return;
-            this.autoClose = this.#autoCloseValue;
+            this.onMouseLeave();
         });
 
         this.position = position || "top-right";
@@ -48,6 +45,17 @@ export default class Toast {
         if(this.#autoCloseTimeout != null) clearTimeout(this.#autoCloseTimeout);
 
         this.#autoCloseTimeout = setTimeout(() => { this.close() }, value);
+    }
+
+    onMouseEnter() {
+        this.#autoCloseValue = this.#autoCloseValue - (new Date() - this.#toastEnterTime);
+        clearTimeout(this.#autoCloseTimeout);
+    }
+
+    onMouseLeave() {
+        if(this.#toast.classList.contains("hide"))
+            return;
+        this.autoClose = this.#autoCloseValue;
     }
 
     close() {

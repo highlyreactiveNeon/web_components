@@ -29,6 +29,8 @@ ul.toasts-container {
     position: fixed;
     width: 20rem;
     padding: 1rem;
+
+    background-color: blue;
 }
 
 .toasts-container[data-position^="top-"] {
@@ -68,6 +70,8 @@ ul.toasts-container {
     cursor: pointer;
     border-style: hidden solid;
     border-width: 2px;
+
+    transition: 4s linear;
 
     display: flex;
     flex-direction: row;
